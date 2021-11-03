@@ -43,19 +43,19 @@ layout = Layout(name="info")
 
 print_count_array_symbols =  Text.from_markup(
     f'Количество доступных символов: {len(password.get_array_symbols())}',
-    style="bold magenta"
+    style="bold green"
 )
 print_array_symbols =  Text.from_markup(
     f'Доступные символы: {password.get_array_symbols()}',
-    style="bold magenta"
+    style="bold green"
 )
 print_count_variant =  Text.from_markup(
     f'Количество возможных комбинаций: {password.count_variant}',
-    style="bold magenta"
+    style="bold green"
 )
 print_password =  Text.from_markup(
     f'Сгенерированный пароль: {password.password}',
-    style="bold magenta"
+    style="bold green"
 )
 
 layout.update(
