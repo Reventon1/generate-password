@@ -1,4 +1,6 @@
 import random
+import hashlib
+
 
 class Password:
     # Набор доступных символов.
@@ -17,21 +19,26 @@ class Password:
         self.password = None
         self.count_symbols = self.COUNT_SYMBOLS
         self.count_variants = 0
+        self.check_summa = ''
+        self.pin_code = ''
 
-    def generation(self, count_symbols):
-        if count_symbols:
-            self.count_symbols = self.count_symbols
-        else:
-            self.count_symbols = self.COUNT_SYMBOLS
+    def generation(self, count_symbols=None, pin_code=None):
+        if count_symbols is not None:
+            self.count_symbols = count_symbols
+        if pin_code is not None:
+            self.pin_code = pin_code
+
         # Узнаем количество всех возможных комбинаций.
         self.count_variant = len(self.ARRAY_SYMBOLS) ** self.count_symbols
 
         # Генерируем уникальный пароль.
         password = ''
-        for i in range(0, count_symbols):
+        for i in range(0, self.count_symbols):
             password = password + f'{self.random_symbol()}'
 
         self.password = password
+
+        self.check_summa = hashlib.sha512(f'{password}{self.pin_code}'.encode()).hexdigest()
 
     # Получить сучайный символ.
     def random_symbol(self):
@@ -41,4 +48,3 @@ class Password:
 
     def get_array_symbols(self):
         return self.ARRAY_SYMBOLS
-
