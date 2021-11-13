@@ -1,4 +1,4 @@
-# generate-password
+# generat-password
 Получить список всех используемых библиотек в проекте:
 ```bash
 pip list
@@ -24,7 +24,8 @@ git push origin --tags
 ```bash
 pip install Flask
 ```
-[rich 10.12.0](https://pypi.org/project/rich/),
+
+[rich 10.12.0](https://pypi.org/project/rich/), 
 [rich api](https://rich.readthedocs.io/en/latest/)
 ```bash
 pip install rich

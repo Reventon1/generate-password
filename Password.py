@@ -18,7 +18,7 @@ class Password:
     def __init__(self):
         self.password = None
         self.count_symbols = self.COUNT_SYMBOLS
-        self.count_variants = 0
+        self.count_variant = 0
         self.check_summa = ''
         self.pin_code = ''
 
@@ -34,17 +34,20 @@ class Password:
         # Генерируем уникальный пароль.
         password = ''
         for i in range(0, self.count_symbols):
-            password = password + f'{self.random_symbol()}'
+            password = password + f'{self.random_symbols()}'
 
         self.password = password
-
         self.check_summa = hashlib.sha512(f'{password}{self.pin_code}'.encode()).hexdigest()
 
-    # Получить сучайный символ.
-    def random_symbol(self):
+    # Получить случайный символ.
+    def random_symbols(self):
         return self.ARRAY_SYMBOLS[
             random.randint(0, len(self.ARRAY_SYMBOLS) - 1)
         ]
+
+    # Получить символ.
+    def get_symbol(self, number):
+        return self.ARRAY_SYMBOLS[number]
 
     def get_array_symbols(self):
         return self.ARRAY_SYMBOLS
